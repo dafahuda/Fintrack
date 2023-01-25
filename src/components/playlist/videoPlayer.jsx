@@ -1,18 +1,17 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import "./responsive-player.css";
-import foto1 from "../../assets/foto1.jpg";
 
-const videoPlayer = ({ url }) => {
+const videoPlayer = ({ url, light }) => {
   return (
     <div className="player-wrapper">
       <ReactPlayer
         className="react-player"
         playing
-        url={url}
-        width="42rem"
+        width="100%"
         height="100%"
-        light={foto1}
+        url={url}
+        light={light}
         controls={true}
         pip={true}
       />

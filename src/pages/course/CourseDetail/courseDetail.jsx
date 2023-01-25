@@ -1,7 +1,10 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link, useNavigate, useParams, Outlet } from "react-router-dom";
 import { Breadcrumb, Container } from "react-bootstrap";
 import Detail from "../../../constants/DetailCourse";
+import VideoPlayer from "../../../components/playlist/videoPlayer";
+import { FaRegPauseCircle, FaRegPlayCircle } from "react-icons/fa";
 import "./coursedetail.css";
 
 const CourseDetail = () => {
@@ -10,16 +13,110 @@ const CourseDetail = () => {
 
   return (
     <Container>
-      <div className="course-detail-container">
-        <div className="course-detail-area1">
+      <Helmet>
+        <title>Fintrack | Course</title>
+      </Helmet>
+      <div class="fc-detail-container">
+        <div class="fc-body-video">
           {" "}
-          <img
-            src={Detail[id - 1].image}
-            alt="foto-1"
+          <VideoPlayer
+            url={Detail[id - 1].url_video}
+            light={Detail[id - 1].image}
             className="course-cover-detail"
           />
         </div>
-        <div className="course-detail-content">
+
+        <div class="fc-body-playlist">
+          {" "}
+          <section class="course-video-playlist">
+            <button className="list-lesson">
+              <span>
+                <FaRegPlayCircle
+                  style={{
+                    fontSize: "26px",
+                    color: "#8F97F9",
+                  }}
+                />
+              </span>
+              <span className="title-playlist">
+                Penggenalan konsep audit laporan
+              </span>
+              <span className="duration-playlist">10.43.00</span>
+            </button>
+            <button className="list-lesson">
+              <span>
+                <FaRegPauseCircle
+                  style={{
+                    fontSize: "26px",
+                    color: "#8F97F9",
+                  }}
+                />
+              </span>
+              <span className="title-playlist">Penggenalan konsep</span>
+              <span className="duration-playlist">10.43.00</span>
+            </button>
+            <button className="list-lesson">
+              <span>
+                <FaRegPauseCircle
+                  style={{
+                    fontSize: "26px",
+                    color: "#8F97F9",
+                  }}
+                />
+              </span>
+              <span className="title-playlist">Apa itu audit laporan</span>
+              <span className="duration-playlist">10.43.00</span>
+            </button>
+            <button className="list-lesson">
+              <span>
+                <FaRegPauseCircle
+                  style={{
+                    fontSize: "26px",
+                    color: "#8F97F9",
+                  }}
+                />
+              </span>
+              <span className="title-playlist">laporan audit</span>
+              <span className="duration-playlist">10.43.00</span>
+            </button>
+            <button className="list-lesson">
+              <span>
+                <FaRegPauseCircle
+                  style={{
+                    fontSize: "26px",
+                    color: "#8F97F9",
+                  }}
+                />
+              </span>
+              <span className="title-playlist">Apa itu audit laporan?</span>
+              <span className="duration-playlist">10.43.00</span>
+            </button>
+
+            <button className="list-lesson">
+              <span>
+                <FaRegPauseCircle
+                  style={{
+                    fontSize: "26px",
+                    color: "#8F97F9",
+                  }}
+                />
+              </span>
+              <span className="title-playlist">
+                Penggenalan konsep audit laporan
+              </span>
+              <span className="duration-playlist">10.43.00</span>
+            </button>
+          </section>
+        </div>
+        <div class="fc-body-link">
+          {" "}
+          <Breadcrumb className="detail-course-list">
+            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+            <Breadcrumb.Item href="/fc">Course</Breadcrumb.Item>
+            <Breadcrumb.Item active>{Detail[id - 1].heading}</Breadcrumb.Item>
+          </Breadcrumb>
+        </div>
+        <div class="fc-body-content">
           {" "}
           <div className="course-detail-course">
             <div className="course-detail-description-course">
@@ -34,15 +131,7 @@ const CourseDetail = () => {
             </div>
           </div>
         </div>
-        <div className="course-detail-link">
-          {" "}
-          <Breadcrumb className="detail-course-list">
-            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-            <Breadcrumb.Item href="/fc">Course</Breadcrumb.Item>
-            <Breadcrumb.Item active>{Detail[id - 1].heading}</Breadcrumb.Item>
-          </Breadcrumb>
-        </div>
-        <div className="course-detail-playlist">
+        <div class="fc-card-content">
           {" "}
           <div className="course-card-detail">
             <div className="course-detail-description">
@@ -51,26 +140,20 @@ const CourseDetail = () => {
                   {Detail[id - 1].heading}
                 </span>
               </p>
-              <p className="course-detail-description"></p>
-              {/* <button
-            className="course-button-detail"
-            onClick={() => navigate(-1)}
-          >
-            BACK
-          </button> */}
+              <p className="course-detail-description">
+                {Detail[id - 1].description}
+              </p>
               <Link
-                to={`/lesson`}
                 type="button"
                 className="course-button-detail"
-                // onClick={() => {
-                //   navigate(`/lesson`);
-                // }}
+                onClick={() => navigate(-1)}
               >
-                Ambil Course
+                Back Course
               </Link>
             </div>
           </div>
         </div>
+        <div class="fc-card-rekomendasi"></div>
       </div>
     </Container>
   );

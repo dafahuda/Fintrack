@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 // import axios from "axios";
 import { Container, Breadcrumb } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 // import { First } from "react-bootstrap/esm/PageItem";
 
 import Search from "../../components/filter/Search";
@@ -33,23 +34,23 @@ const Course = () => {
   // akhir filter
 
   //filter level
-  const allLevel = [
-    "Semua Level",
-    ...new Set(items.map((fungsi) => fungsi.level)),
-  ];
+  // const allLevel = [
+  //   "Semua Level",
+  //   ...new Set(items.map((fungsi) => fungsi.level)),
+  // ];
 
-  const [menuItemLevel, setMenuItemLevel] = useState(items);
-  const [radios, setRadios] = useState(allLevel);
+  // const [menuItemLevel, setMenuItemLevel] = useState(items);
+  // const [radios, setRadios] = useState(allLevel);
 
-  const filterLevel = (radio) => {
-    if (radio === "Semua Level") {
-      setMenuItemLevel(items);
-      return;
-    }
+  // const filterLevel = (radio) => {
+  //   if (radio === "Semua Level") {
+  //     setMenuItemLevel(items);
+  //     return;
+  //   }
 
-    const filteredLevel = items.filter((fungsi) => fungsi.level === radio);
-    setMenuItemLevel(filteredLevel);
-  };
+  //   const filteredLevel = items.filter((fungsi) => fungsi.level === radio);
+  //   setMenuItemLevel(filteredLevel);
+  // };
   //akhir filter level
 
   // filter search
@@ -67,7 +68,10 @@ const Course = () => {
   //akhir pagination
 
   return (
-    <Container fluid className="content">
+    <Container className="content">
+      <Helmet>
+        <title>Fintrack | Finacial Course</title>
+      </Helmet>
       <div className="filter">
         <Breadcrumb breadcrumb>
           <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
@@ -88,7 +92,7 @@ const Course = () => {
             />
           </div>
           <Search setQuery={(query) => setQuery(query)} />
-          <LevelCourse radio={radios} filterLevel={filterLevel} />
+          {/* <LevelCourse radio={radios} filterLevel={filterLevel} /> */}
           <FilterCourse button={buttons} filterKategori={filterKategori} />
         </form>
       </div>
